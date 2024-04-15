@@ -93,4 +93,4 @@ fastlane/readme.md
 # sha file
 *.sha
 
-
+output.py
