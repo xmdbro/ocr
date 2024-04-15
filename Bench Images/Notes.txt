@@ -1,5 +1,0 @@
-Handwritten Forms are from the IAM Handwriting Database
-https://fki.tic.heia-fr.ch/databases/iam-handwriting-database
-
-Images are from the TextCaps Image Dataset
-https://textvqa.org/textcaps/
