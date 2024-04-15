@@ -1,5 +1,4 @@
-# Class requirement for Research Project of The Senior High School Department, School of Saint Anthony, Quezon City
-# under the guidance of our research adviser Rey-Ann Rachelle S.P. Palasigue for A.Y. 2023-2024.
+# Class requirement for Research Project of The Senior High School Department, School of Saint Anthony, Quezon City under the guidance of our research adviser Rey-Ann Rachelle S.P. Palasigue for A.Y. 2023-2024.
 
 # Information about testing environment:
 # OS: Windows 11 Pro 23H2 
