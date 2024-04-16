@@ -53,4 +53,3 @@ for idx, image_filename in enumerate(image_filenames, start=1):
     elapsed_time = timeit.timeit(code_to_test.format(tess_exe, full_image_path), number=1)
     ocr_result = code_to_test.format(tess_exe, full_image_path)
     print("Image {}: Elapsed Time: {:.4f} seconds".format(idx, elapsed_time))
-    print("Image {}: Accuracy")
