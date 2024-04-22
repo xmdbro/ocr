@@ -22,6 +22,8 @@ import time
 import timeit
 import os
 import pytesseract
+import json
+import statistics
 
 start_time = time.time()
 tess_exe = r"C:\Users\xmdb\AppData\Local\Programs\Tesseract-OCR\tesseract.exe"
@@ -48,8 +50,19 @@ pytesseract.pytesseract.tesseract_cmd = r"{}"
 pytesseract.pytesseract.image_to_string(r"{}", lang='eng')
 """
 
-for idx, image_filename in enumerate(image_filenames, start=1):
-    full_image_path = os.path.join(image_folder, image_filename)
-    elapsed_time = timeit.timeit(code_to_test.format(tess_exe, full_image_path), number=1)
-    ocr_result = code_to_test.format(tess_exe, full_image_path)
-    print("Image {}: Elapsed Time: {:.4f} seconds".format(idx, elapsed_time))
+elapsed_times_per_image = {image: [] for image in image_filenames}
+runs = int(input("How many runs?: "))
+
+for run in range(runs):
+    for idx, image_filename in enumerate(image_filenames, start=1):
+        full_image_path = os.path.join(image_folder, image_filename)
+        elapsed_time = timeit.timeit(lambda: exec(code_to_test.format(tess_exe, full_image_path)), number=1)
+        print("Image {}: Elapsed Time: {:.4f} seconds".format(idx, elapsed_time))
+        elapsed_times_per_image[image_filename].append(elapsed_time)
+
+with open("elapsed_times.json", "w") as f:
+    json.dump(elapsed_times_per_image, f)
+
+for image_filename, times in elapsed_times_per_image.items():
+    avg_elapsed_time = statistics.mean(times)
+    print(f"Image {image_filename}: Average Elapsed Time: {avg_elapsed_time:.4f} seconds")
